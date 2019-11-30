@@ -19,6 +19,8 @@
                                 <Button fx:id="startButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false"
                                         onAction="#start" text="Start"/>
                                 <TextField layoutX="97.0" layoutY="44.0" prefHeight="25.0" prefWidth="411.0"/>
+                                <Button fx:id="stopButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false"
+                                        onAction="#stop" text="Stoped"/>
                             </children>
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="258.0" prefWidth="598.0">

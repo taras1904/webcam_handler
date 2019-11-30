@@ -13,19 +13,33 @@ public class MainController {
     @FXML
     private Button saveButton;
     @FXML
+    private Button stopButton;
+    @FXML
     private ImageView mainScreen;
     @FXML
     private ImageView secondScreen;
+    @FXML
+    private VideoThread videoThread;
+
 
     @FXML
     private void start(ActionEvent event) {
         startButton.setText("Started");
-        VideoThread videoThread = new VideoThread(mainScreen, secondScreen);
+        stopButton.setText("Stop");
+        videoThread = new VideoThread(mainScreen, secondScreen);
         videoThread.start();
     }
 
+    @FXML
+    private void stop(ActionEvent event) {
+        startButton.setText("Start");
+        stopButton.setText("Stopped");
+        videoThread.cameraStop();
+        videoThread.stop();
+    }
 
     public void saveFiles(ActionEvent actionEvent) {
         saveButton.setText("Saved");
     }
+
 }
