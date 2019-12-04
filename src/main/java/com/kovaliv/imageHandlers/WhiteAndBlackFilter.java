@@ -27,7 +27,7 @@ public class WhiteAndBlackFilter {
     }
 
     private boolean isBlack(Pixel pixel) {
-        return pixel.getSum() < 200;
+        return pixel.getSum() < 300;
     }
 
     public void setDimension(Dimension dimension) {
