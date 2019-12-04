@@ -1,0 +1,7 @@
+com\kovaliv\Main.class
+com\kovaliv\imageHandlers\FindElements.class
+com\kovaliv\imageHandlers\Pixel.class
+com\kovaliv\threads\VideoThread.class
+com\kovaliv\imageHandlers\ImpulsFilter.class
+com\kovaliv\imageHandlers\WhiteAndBlackFilter.class
+com\kovaliv\controller\MainController.class

@@ -2,15 +2,20 @@ package com.kovaliv.imageHandlers;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FindElements {
     private Dimension dimension;
     private BufferedImage image;
     private int[][] colorMas;
+    private List<BufferedImage> bufferedImageList;
+
 
     public FindElements(Dimension dimension) {
         this.dimension = dimension;
         colorMas = new int[dimension.width][dimension.height];
+        bufferedImageList = new ArrayList<BufferedImage>();
     }
 
     public BufferedImage find(BufferedImage bufferedImage) {
@@ -70,6 +75,24 @@ public class FindElements {
                 }
             }
         }
+    }
+
+    public void fillList() {
+        int num = countNumOfPoints(2);
+        int s = 2;
+        while (num > 1) {
+            int xTop = xTop(s) - 1;
+            int xBottom = xBottom(s) + 1;
+            int yLeft = yLeft(s) - 1;
+            int yRight = yRight(s) + 1;
+            bufferedImageList.add(image.getSubimage(xTop + 1, yLeft + 1, xBottom - xTop - 2, yRight - yLeft - 2));
+            num = countNumOfPoints(++s);
+        }
+
+    }
+
+    public List<BufferedImage> getBufferedImageList() {
+        return bufferedImageList;
     }
 
     private int xTop(int n) {

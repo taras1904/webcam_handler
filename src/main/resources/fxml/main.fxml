@@ -18,7 +18,8 @@
                                         onAction="#saveFiles" text="Save files"/>
                                 <Button fx:id="startButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false"
                                         onAction="#start" text="Start"/>
-                                <TextField layoutX="97.0" layoutY="44.0" prefHeight="25.0" prefWidth="411.0"/>
+                                <TextField fx:id="pathText" onAction="#textChanged" layoutX="97.0" layoutY="44.0"
+                                           prefHeight="25.0" prefWidth="411.0" text="C:\\Users\\user\\Desktop\\mzkit"/>
                                 <Button fx:id="stopButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false"
                                         onAction="#stop" text="Stoped"/>
                             </children>

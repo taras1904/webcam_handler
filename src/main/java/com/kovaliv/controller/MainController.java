@@ -4,10 +4,13 @@ import com.kovaliv.threads.VideoThread;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 public class MainController {
 
+    @FXML
+    private TextField pathText;
     @FXML
     private Button startButton;
     @FXML
@@ -40,6 +43,12 @@ public class MainController {
 
     public void saveFiles(ActionEvent actionEvent) {
         saveButton.setText("Saved");
+        videoThread.saveImg();
+    }
+
+    public void textChanged(ActionEvent actionEvent) {
+        System.out.println(pathText.getText());
+        videoThread.setPath(pathText.getText());
     }
 
 }
