@@ -47,7 +47,6 @@ public class MainController {
     }
 
     public void textChanged(ActionEvent actionEvent) {
-        System.out.println(pathText.getText());
         videoThread.setPath(pathText.getText());
     }
 

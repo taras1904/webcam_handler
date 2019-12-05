@@ -39,22 +39,39 @@ public class VideoThread extends Thread {
 
         while (true) {
             BufferedImage bufferedImage = webcam.getImage();
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            mainScreen.setImage(image);
-            bufferedImage = findElements.find(whiteAndBlackFilter.filter(bufferedImage));
-            image = SwingFXUtils.toFXImage(bufferedImage, null);
-            if (save) {
-                findElements.fillList();
-                for (BufferedImage bufferedImage1 : findElements.getBufferedImageList()) {
-                    SaveImage saveImage = new SaveImage(bufferedImage1);
-                    saveImage.setPath(path);
-                    saveImage.saveBmp();
-                    saveImage.saveTxt();
+            Image image;
+            BufferedImage buf = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
+            for (int i = 0; i < bufferedImage.getWidth(); i++) {
+                for (int j = 0; j < bufferedImage.getHeight(); j++) {
+                    buf.setRGB(i, j, bufferedImage.getRGB(i, j));
                 }
-                save = false;
             }
-            secondScreen.setImage(image);
+            findElements.setStartImage(buf);
+            try {
+                bufferedImage = findElements.find(whiteAndBlackFilter.filter(bufferedImage));
+                image = SwingFXUtils.toFXImage(bufferedImage, null);
+                if (save) {
+                    findElements.fillList();
+                    for (BufferedImage bufferedImage1 : findElements.getBufferedImageList()) {
+                        saveImage(bufferedImage1);
+                    }
+                    save = false;
+                }
+                secondScreen.setImage(image);
+                image = SwingFXUtils.toFXImage(findElements.getStartImage(), null);
+                mainScreen.setImage(image);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
+    }
+
+    private void saveImage(BufferedImage bufferedImage) {
+        SaveImage saveImage = new SaveImage(bufferedImage);
+        saveImage.setPath(path);
+        saveImage.saveBmp();
+        saveImage.saveTxt();
     }
 
     public void saveImg() {

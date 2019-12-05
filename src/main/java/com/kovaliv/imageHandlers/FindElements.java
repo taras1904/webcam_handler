@@ -8,6 +8,7 @@ import java.util.List;
 public class FindElements {
     private Dimension dimension;
     private BufferedImage image;
+    private BufferedImage startImage;
     private int[][] colorMas;
     private List<BufferedImage> bufferedImageList;
 
@@ -16,6 +17,14 @@ public class FindElements {
         this.dimension = dimension;
         colorMas = new int[dimension.width][dimension.height];
         bufferedImageList = new ArrayList<BufferedImage>();
+    }
+
+    public BufferedImage getStartImage() {
+        return startImage;
+    }
+
+    public void setStartImage(BufferedImage startImage) {
+        this.startImage = startImage;
     }
 
     public BufferedImage find(BufferedImage bufferedImage) {
@@ -36,6 +45,9 @@ public class FindElements {
         for (int i = 0; i < dimension.width; i++) {
             for (int j = 0; j < dimension.height; j++) {
                 image.setRGB(i, j, chooseColor(colorMas[i][j]).getRGB());
+                if (colorMas[i][j] == -1) {
+                    startImage.setRGB(i, j, Color.RED.getRGB());
+                }
             }
         }
         return image;
@@ -88,7 +100,6 @@ public class FindElements {
             bufferedImageList.add(image.getSubimage(xTop + 1, yLeft + 1, xBottom - xTop - 2, yRight - yLeft - 2));
             num = countNumOfPoints(++s);
         }
-
     }
 
     public List<BufferedImage> getBufferedImageList() {
