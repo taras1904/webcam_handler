@@ -1,5 +1,7 @@
 package com.kovaliv.imageHandlers;
 
+import com.kovaliv.exceptions.DontValidNumberException;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ public class FindElements {
     private BufferedImage startImage;
     private int[][] colorMas;
     private List<BufferedImage> bufferedImageList;
+    private String detectedNumbers;
 
 
     public FindElements(Dimension dimension) {
@@ -28,6 +31,7 @@ public class FindElements {
     }
 
     public BufferedImage find(BufferedImage bufferedImage) {
+        detectedNumbers = "";
         image = bufferedImage;
         getBiteCode();
         clearBorder();
@@ -87,6 +91,17 @@ public class FindElements {
                 }
             }
         }
+        try {
+            SaveImage saveImage = new SaveImage(image.getSubimage(xTop + 1, yLeft + 1, xBottom - xTop - 2, yRight - yLeft - 2));
+            detectedNumbers += DeterminationNumber.determinateNumber(saveImage.scale()) + "   |   ";
+        } catch (DontValidNumberException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public String getDetectedNumbers() {
+        return detectedNumbers;
     }
 
     public void fillList() {
