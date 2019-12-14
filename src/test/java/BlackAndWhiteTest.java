@@ -1,4 +1,4 @@
-import com.kovaliv.imageHandlers.WhiteAndBlackFilter;
+import com.kovaliv.imageHandlers.Filters.WhiteAndBlackFilter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ public class BlackAndWhiteTest {
         image.setRGB(1, 0, Color.WHITE.getRGB());
         image.setRGB(0, 1, Color.BLACK.getRGB());
         image.setRGB(1, 1, Color.WHITE.getRGB());
-        WhiteAndBlackFilter whiteAndBlackFilter = new WhiteAndBlackFilter(dimension);
+        WhiteAndBlackFilter whiteAndBlackFilter = new WhiteAndBlackFilter();
         image = whiteAndBlackFilter.filter(image);
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {

@@ -1,18 +1,16 @@
-package com.kovaliv.imageHandlers;
+package com.kovaliv.imageHandlers.Filters;
+
+import com.kovaliv.imageHandlers.Pixel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class WhiteAndBlackFilter {
-    BufferedImage image;
-    Dimension dimension;
+public class WhiteAndBlackFilter implements Filter {
 
-    public WhiteAndBlackFilter(Dimension dimension) {
-        this.dimension = dimension;
-    }
 
     public BufferedImage filter(BufferedImage bufferedImage) {
-        image = bufferedImage;
+        BufferedImage image = bufferedImage;
+        Dimension dimension = new Dimension(bufferedImage.getWidth(), bufferedImage.getHeight());
         for (int i = 0; i < dimension.width; i++) {
             for (int j = 0; j < dimension.height; j++) {
                 Pixel pixel = new Pixel(image.getRGB(i, j));
@@ -30,7 +28,4 @@ public class WhiteAndBlackFilter {
         return pixel.getSum() < 300;
     }
 
-    public void setDimension(Dimension dimension) {
-        this.dimension = dimension;
-    }
 }

@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kovaliv.controller.MainController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="com.kovaliv.controller.MainController">
     <children>
         <TitledPane prefHeight="400.0" prefWidth="600.0" text="МЗКІТ Лаб 7">
             <content>
-                <SplitPane dividerPositions="0.24064171122994651" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                <SplitPane dividerPositions="0.24064171122994651" orientation="VERTICAL" prefHeight="200.0"
+                           prefWidth="160.0">
                     <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                             <children>
-                                <Label layoutX="524.0" layoutY="48.0" text="directory" />
-                                <Button fx:id="saveButton" layoutX="14.0" layoutY="44.0" mnemonicParsing="false" onAction="#saveFiles" text="Save files" />
-                                <Button fx:id="startButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#start" text="Start" />
-                                <TextField fx:id="pathText" onAction="#textChanged" layoutX="97.0" layoutY="44.0" prefHeight="25.0" prefWidth="411.0" text="C:\\Users\\user\\Desktop\\mzkit" />
-                                <Button fx:id="stopButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" onAction="#stop" text="Stoped" />
+                                <Label layoutX="524.0" layoutY="48.0" text="directory"/>
+                                <Button fx:id="saveButton" layoutX="14.0" layoutY="44.0" mnemonicParsing="false"
+                                        onAction="#saveFiles" text="Save files"/>
+                                <Button fx:id="startButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false"
+                                        onAction="#start" text="Start"/>
+                                <TextField fx:id="pathText" layoutX="97.0" layoutY="44.0" onAction="#textChanged"
+                                           prefHeight="25.0" prefWidth="411.0" text="C:\\Users\\user\\Desktop\\mzkit"/>
+                                <Button fx:id="stopButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false"
+                                        onAction="#stop" text="Stoped"/>
+                                <Label fx:id="determinationResult" layoutX="175.0" layoutY="14.0" text="  "/>
+                                <ComboBox fx:id="cameras" onAction="#changeWebcam" layoutX="422.0" layoutY="10.0" prefWidth="150.0"
+                                          promptText="Choose camera"/>
                             </children>
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="258.0" prefWidth="598.0">
@@ -27,12 +33,14 @@
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <ImageView fx:id="mainScreen" fitHeight="280.0" fitWidth="290.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="mainScreen" fitHeight="280.0" fitWidth="290.0"
+                                                           layoutX="7.0" pickOnBounds="true" preserveRatio="true"/>
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                             <children>
-                                                <ImageView fx:id="secondScreen" fitHeight="280.0" fitWidth="290.0" layoutX="3.0" pickOnBounds="true" preserveRatio="true" />
+                                                <ImageView fx:id="secondScreen" fitHeight="280.0" fitWidth="290.0"
+                                                           layoutX="3.0" pickOnBounds="true" preserveRatio="true"/>
                                             </children>
                                         </AnchorPane>
                                     </items>
