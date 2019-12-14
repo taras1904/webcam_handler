@@ -7,11 +7,23 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class DeterminationNumber {
+public class DeterminationNumber {
     private static List<BufferedImage> numbers;
     private static double[] koef;
 
-    public static int determinateNumber(BufferedImage image) throws DontValidNumberException {
+    private static List<Integer> determinateNumbers(List<BufferedImage> images) {
+        List<Integer> numbers = new ArrayList<>();
+        for (BufferedImage image : images) {
+            try {
+                numbers.add(determinateNumber(image));
+            } catch (DontValidNumberException e) {
+                //Число не розпізнано
+            }
+        }
+        return numbers;
+    }
+
+    private static int determinateNumber(BufferedImage image) throws DontValidNumberException {
         fillNumbers();
         koef = new double[10];
         int i = 0;

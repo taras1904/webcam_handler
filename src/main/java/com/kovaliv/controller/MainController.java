@@ -41,6 +41,7 @@ public class MainController {
         videoThread.stop();
     }
 
+    @FXML
     public void saveFiles(ActionEvent actionEvent) {
         saveButton.setText("Saved");
         videoThread.saveImg();
