@@ -23,7 +23,8 @@
                                 <Button fx:id="stopButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false"
                                         onAction="#stop" text="Stoped"/>
                                 <Label fx:id="determinationResult" layoutX="175.0" layoutY="14.0" text="  "/>
-                                <ComboBox fx:id="cameras" layoutX="422.0" layoutY="10.0" prefWidth="150.0"
+                                <ComboBox fx:id="cameras" onAction="#changeWebcam" layoutX="422.0" layoutY="10.0"
+                                          prefWidth="150.0"
                                           promptText="Choose camera"/>
                             </children>
                         </AnchorPane>

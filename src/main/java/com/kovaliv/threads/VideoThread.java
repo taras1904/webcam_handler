@@ -8,7 +8,6 @@ import com.kovaliv.imageHandlers.Filters.WhiteAndBlackFilter;
 import com.kovaliv.imageHandlers.ImageEditor;
 import com.kovaliv.imageHandlers.SaveImage;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -21,18 +20,22 @@ public class VideoThread extends Thread {
     ImageView secondScreen;
     Webcam webcam;
     Dimension dimension;
-    Label determinationResult;
     String path;
     boolean save;
+    boolean cameraChange;
 
-    public VideoThread(ImageView mainScreen, ImageView secondScreen) {
+    public VideoThread(ImageView mainScreen, ImageView secondScreen, Webcam webcam) {
         this.mainScreen = mainScreen;
         this.secondScreen = secondScreen;
-        dimension = new Dimension(176, 144); // 320 * 240
-        webcam = Webcam.getDefault();
+        dimension = new Dimension(176, 144); // 176 * 144, 320 * 240
+        this.webcam = webcam;
+        if (webcam.isOpen()) {
+            webcam.close();
+        }
         webcam.setViewSize(dimension);
         webcam.open();
         save = false;
+        cameraChange = false;
         path = "C:\\Users\\user\\Desktop\\mzkit";
     }
 
@@ -40,8 +43,10 @@ public class VideoThread extends Thread {
     public void run() {
 
         Image image;
-        BufferedImage bufImage;
         while (true) {
+            if (cameraChange) {
+                continue;
+            }
             BufferedImage bufferedImage = webcam.getImage();
             BufferedImage copy = ImageEditor.copyImage(bufferedImage);
 
@@ -82,6 +87,15 @@ public class VideoThread extends Thread {
         bufferedImage = markFilter.filter(bufferedImage);
 
         return bufferedImage;
+    }
+
+    public void setWebcam(Webcam webcam) {
+        cameraChange = true;
+        this.webcam.close();
+        this.webcam = webcam;
+        webcam.setViewSize(dimension);
+        webcam.open();
+        cameraChange = false;
     }
 
     public void saveImg() {
