@@ -1,7 +1,6 @@
 package com.kovaliv.threads;
 
 import com.github.sarxos.webcam.Webcam;
-import com.kovaliv.imageHandlers.DeterminationNumber;
 import com.kovaliv.imageHandlers.Filters.BorderFilter;
 import com.kovaliv.imageHandlers.Filters.ImpulsFilter;
 import com.kovaliv.imageHandlers.Filters.MarkFilter;
@@ -53,15 +52,6 @@ public class VideoThread extends Thread {
 
             bufferedImage = filters(bufferedImage);
             image = SwingFXUtils.toFXImage(bufferedImage, null);
-
-            try {
-                List<Integer> list = DeterminationNumber.determinateNumbers(ImageEditor.getObjects(bufferedImage));
-                if (list.size() > 0) {
-                    System.out.println(list.toString());
-                }
-            } catch (Exception e) {
-                //Exeption
-            }
 
             if (save) {
                 saveImages(bufferedImage);
