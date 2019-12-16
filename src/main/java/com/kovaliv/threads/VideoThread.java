@@ -62,6 +62,7 @@ public class VideoThread extends Thread {
             } catch (Exception e) {
                 //Exeption
             }
+
             if (save) {
                 saveImages(bufferedImage);
                 save = false;
