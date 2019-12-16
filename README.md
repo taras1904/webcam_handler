@@ -1,5 +1,5 @@
 # Webcam Handler
->######@Autor Kovaliv Taras
+>@Autor Kovaliv Taras
 ## An application for recognizing numbers from a webcam
 ### The program has 5 filters:
 - ImpulsFilter to to clear the image of small objects
@@ -8,4 +8,4 @@
 - MarkFilter to mark objects by red rectangle
 - ScaleFilter to scale image to 60 x 40 
 ### And class DeterminationNumber 
->Class will be used to determinate numbers i Times New Roman font.
+>Class will be used to determinate numbers in Times New Roman font.
