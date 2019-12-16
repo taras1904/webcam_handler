@@ -14,7 +14,7 @@ public class DeterminationNumber {
     private static List<BufferedImage> numbers;
     private static double[] koef;
 
-    public static List<Integer> determinateNumbers(List<BufferedImage> images) {
+    private static List<Integer> determinateNumbers(List<BufferedImage> images) {
         List<Integer> numbers = new ArrayList<>();
         for (BufferedImage image : images) {
             try {
@@ -73,11 +73,11 @@ public class DeterminationNumber {
         int sum = 0;
         for (int i = 0; i < f0.getWidth(); i++) {
             for (int j = 0; j < f0.getWidth(); j++) {
-                sum += (isBlack(f.getRGB(i, j)) - isBlack(f0.getRGB(i, j))) * (isBlack(f.getRGB(i, j)) - isBlack(f0.getRGB(i, j)));
+                sum += isBlack(f.getRGB(i, j)) - isBlack(f0.getRGB(i, j));
             }
         }
         double ret = (double) sum / (f0.getWidth() * f0.getHeight());
-        return ret;
+        return ret > 0 ? ret : -ret;
     }
 
     private static int isBlack(int rgb) {
